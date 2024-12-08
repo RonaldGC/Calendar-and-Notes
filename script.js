@@ -1,10 +1,12 @@
 let numMes = 0;
 let click = null;
 let eventos = localStorage.getItem('eventos') ? JSON.parse(localStorage.getItem('eventos')) : [];
+let notas = localStorage.getItem('notas') ? JSON.parse(localStorage.getItem('notas')) : [];
 
 const visualizarMes = document.getElementById('visualizar-mes');
 const diasEntreSemana = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
 
+const entradaDeTituloEvento = document.getElementById('c-input-nombre-evento');
 const horaInicio = document.getElementById('c-hora-inicio');
 const horaFinal = document.getElementById('c-hora-final');
 const duracion = document.getElementById('c-duracion');
@@ -12,8 +14,10 @@ const descripcion = document.getElementById('c-descripcion');
 
 const nuevoEventoAbierto = document.getElementById('nuevo-evento-abierto');
 const eliminarEventoAbierto = document.getElementById('eliminar-evento-abierto');
+
+const nuevaNota = document.getElementById('add-note');
+
 const oscurecer = document.getElementById('oscurecer-fondo');
-const entradaDeTituloEvento = document.getElementById('c-input-nombre-evento');
 
 function abrirVentana(date){
     click = date;
@@ -174,6 +178,9 @@ function botones() {
         numMes--;
         cargar();
     });
+
+    document.getElementById('add-event').addEventListener('click',abrirVentana);
+
 
     document.getElementById('boton-guardar').addEventListener('click',guardarEvento);
     document.getElementById('boton-cancelar').addEventListener('click', cerrarVentana);

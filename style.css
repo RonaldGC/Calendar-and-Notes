@@ -66,6 +66,10 @@ section{
     width: auto;
     height: 650px;
 }
+.menu button{
+    background-color: transparent;
+    border: none;
+}
 .icon{
     fill: var(--colorsecundario-mc);
     width: 100% !important;
@@ -85,7 +89,7 @@ section{
     margin-top: 20px;
 }
 #settings{
-    margin-top: 440px;
+    margin-top: 410px;
 }
 
 .columna-2{
@@ -415,7 +419,6 @@ textarea::-webkit-scrollbar-thumb{
 }
 
 /*Crear eventos*/
-
 #oscurecer-fondo{
     display: none;
     top: 0px;
@@ -504,7 +507,7 @@ textarea#c-descripcion, textarea#e-descripcion{
     gap: 10px;
     margin: 0 14px;
 }
-.boton-cartas{
+.boton-cartas, .boton-cartas-nuevo{
     width: 70px;
     height: 30px;
     border-radius: 8px;
@@ -517,6 +520,10 @@ textarea#c-descripcion, textarea#e-descripcion{
 #boton-cancelar, #boton-eliminar, #boton-cerrar{
     background-color: var(--colorsecundario-mc);
     color: var(--colorprimario-mc);
+}
+.header button{
+    background-color: transparent;
+    border: none;
 }
 
 .carta-rojo{
