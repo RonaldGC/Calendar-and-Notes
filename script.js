@@ -5,17 +5,15 @@ let eventos = localStorage.getItem('eventos') ? JSON.parse(localStorage.getItem(
 const visualizarMes = document.getElementById('visualizar-mes');
 const diasEntreSemana = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
 
-
 const horaInicio = document.getElementById('c-hora-inicio');
 const horaFinal = document.getElementById('c-hora-final');
 const duracion = document.getElementById('c-duracion');
 const descripcion = document.getElementById('c-descripcion');
 
-
 const nuevoEventoAbierto = document.getElementById('nuevo-evento-abierto');
 const eliminarEventoAbierto = document.getElementById('eliminar-evento-abierto');
 const oscurecer = document.getElementById('oscurecer-fondo');
-const entradaDeTituloEvento = document.getElementById('input-nombre-evento');
+const entradaDeTituloEvento = document.getElementById('c-input-nombre-evento');
 
 function abrirVentana(date){
     click = date;
@@ -23,15 +21,16 @@ function abrirVentana(date){
     const eventoParaDia = eventos.find(e => e.date === click);
 
     if (eventoParaDia) {
-        document.getElementById('texto-evento').value = eventoParaDia.title;
-        document.getElementById('e-hora-inicio').value = eventoParaDia.horaInicio;
+        document.getElementById('texto-evento').innerText = eventoParaDia.title;
+        document.getElementById('e-hora-final').value = eventoParaDia.horaInicio;
         document.getElementById('e-hora-final').value = eventoParaDia.horaFinal;
-        document.getElementById('e-duracion').textContent = eventoParaDia.duracion;
-        document.getElementById('e-descripcion').value = eventoParaDia.descripcion;
+        document.getElementById('e-descripcion').textContent = eventoParaDia.descripcion;
 
         eliminarEventoAbierto.style.display = 'flex'
+        nuevoEventoAbierto.style.display = 'none';
     }else{
         nuevoEventoAbierto.style.display = 'flex';
+        eliminarEventoAbierto.style.display = 'none';
     }
     oscurecer.style.display = 'block';
 }
@@ -96,6 +95,7 @@ function cargar(){
     }
 }
 function cerrarVentana(){
+
     entradaDeTituloEvento.classList.remove('error')
     nuevoEventoAbierto.style.display = 'none';
     eliminarEventoAbierto.style.display = 'none'
@@ -111,36 +111,22 @@ document.getElementById('oscurecer-fondo').addEventListener('click', () => cerra
 
 function guardarEvento(){
     if (entradaDeTituloEvento.value){
-       entradaDeTituloEvento.classList.remove('error');
+       entradaDeTituloEvento.classList.remove('error')
 
-       const eventoExiste = eventos.find(e => e.date === click);
-
-       const nuevoEvento = {
+       eventos.push({
             date: click,
-            title: entradaDeTituloEvento.value,
+            title: entradaDeTituloEvento.title,
             horaInicio: horaInicio.value,
             horaFinal: horaFinal.value,
-            duracion: duracion.textContent,
+            duracion: duracion.value,
             descripcion: descripcion.value,
-        };
-        if(eventoExiste){
-            const index = eventos.findIndex(e => e.date === click);
-            if (index !== -1) {
-                eventos[index] = nuevoEvento; 
-            }
-        }else{
-            eventos.push(nuevoEvento);
-        }
+        });
 
         localStorage.setItem('eventos', JSON.stringify(eventos));
         cerrarVentana();
     } else {
         entradaDeTituloEvento.classList.add('error');
     }
-
-    console.log('Fecha seleccionada (click):', click);
-    console.log('Eventos:', eventos);
-    console.log('Evento encontrado:', eventoExiste)
 }
 function eliminarEvento(){
     eventos = eventos.filter(e => e.date !== click);
@@ -189,8 +175,7 @@ function botones() {
         cargar();
     });
 
-    document.getElementById('c-boton-guardar').addEventListener('click',guardarEvento);
-    document.getElementById('e-boton-guardar').addEventListener('click',guardarEvento);
+    document.getElementById('boton-guardar').addEventListener('click',guardarEvento);
     document.getElementById('boton-cancelar').addEventListener('click', cerrarVentana);
     document.getElementById('boton-eliminar').addEventListener('click',eliminarEvento);
     document.getElementById('boton-cerrar').addEventListener('click', cerrarVentana);

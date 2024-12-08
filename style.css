@@ -453,7 +453,7 @@ textarea::-webkit-scrollbar-thumb{
     left: calc(50% - 175px);
     position: absolute;
 }
-#input-nombre-evento, #texto-evento {
+#c-input-nombre-evento, #texto-evento {
     color: var(--colorprimario-mc);
     font-weight: 600;
     font-size: larger;
@@ -494,7 +494,7 @@ textarea#c-descripcion, textarea#e-descripcion{
     font-size: 14px;
     
 }
-#descripcion:focus-visible, #e-descripcion:focus-visible{
+#c-descripcion:focus-visible, #e-descripcion:focus-visible{
     outline: 1px solid var(--colorsecundario-mc);
     border-radius: 8px;
 }
@@ -510,7 +510,7 @@ textarea#c-descripcion, textarea#e-descripcion{
     border-radius: 8px;
     border: none;
 }
-#c-boton-guardar, #e-boton-guardar {
+#boton-guardar, #boton-guardar {
     background-color: var(--colorprimario-mc);
     color: var(--colorresaltar-mc);
 }
