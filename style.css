@@ -49,7 +49,7 @@ body{
     margin-top: 40px;
     height: 100vh;
     display: grid;
-    grid-template-columns: 44px 777px 260px ;
+    grid-template-columns: 44px 778px 260px ;
     justify-content: center;
 
 }
@@ -210,7 +210,20 @@ hr{
     flex-direction: column;
     align-items: center;
     height: 650px;
+    overflow-y: scroll;
 }
+.columna-3::-webkit-scrollbar{
+    background-color: var(--colorresaltar-mc);
+    width: 10px;
+    border-radius: 10px;
+}
+.columna-3::-webkit-scrollbar-thumb{
+    background: var(--colorprimario-mc);
+    border: 1px solid var(--colorresaltar-mc);
+    border-radius: 10px;
+}
+
+
 .fecha{
     color: var(--colorresaltar-mc);
     font-size: larger;
@@ -315,49 +328,12 @@ input[type="checkbox"]:checked + label{
 .añadir p:nth-child(1){
     font-weight: 600;
 }
-.nota{
-    display: flex;
-    flex-direction: column;
-    width: 220px ;
-    height: 240px;
 
+.burbuja-nota{
+    width: 25px;
+    height: 25px;
     background-color: var(--colorresaltar-mc);
-    color: var(--colorprimario-mc);
-    border-radius: 8px;
-    margin: 8px;
-    padding: 0px 4px 8px 4px;
 }
-.nombre-nota{
-    font-size: large;
-    font-weight: 600;
-    padding: 12px 0;
-    margin-left: 12px;
-}
-textarea{
-    width: auto;
-    height: 220px;
-    margin-left: 12px;
-    background-color:var(--colorresaltar-mc);
-    border: none;
-    font: var(--p);
-    resize: none;
-    color:var(--colorprimario-mc)
-}
-textarea:focus-visible{
-    outline:1px solid  var(--colorresaltar-mc);
-    color: var(var(--colorprimario-mc));
-}
-textarea::-webkit-scrollbar{
-    background-color: var(--colorresaltar-mc);
-    width: 10px;
-    border-radius: 10px;
-}
-textarea::-webkit-scrollbar-thumb{
-    background: var(--colorprimario-mc);
-    border: 1px solid var(--colorresaltar-mc);
-    border-radius: 10px;
-}
-
 
 /* Visualizacion del mes */
 .mes{
@@ -456,7 +432,7 @@ textarea::-webkit-scrollbar-thumb{
     left: calc(50% - 175px);
     position: absolute;
 }
-#c-input-nombre-evento, #texto-evento {
+#c-input-nombre-evento, #texto-evento, .eliminar-nota, .add-nota {
     color: var(--colorprimario-mc);
     font-weight: 600;
     font-size: larger;
@@ -501,23 +477,37 @@ textarea#c-descripcion, textarea#e-descripcion{
     outline: 1px solid var(--colorsecundario-mc);
     border-radius: 8px;
 }
-.caja-botones{
+#caja-botones{
     display: flex;
     justify-content: flex-end;
     gap: 10px;
     margin: 0 14px;
+    padding: 12px;
 }
-.boton-cartas, .boton-cartas-nuevo{
+.caja-botones-crear{
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+    margin: 0 14px;
+    padding: 12px;
+}
+
+.nota #caja-botones{
+    margin: 0;
+    padding: 0;
+}
+
+.boton-cartas, .boton-cartas-nuevo, #editar-boton-eliminar-nota{
     width: 70px;
     height: 30px;
     border-radius: 8px;
     border: none;
 }
-#boton-guardar, #boton-guardar {
+#boton-guardar, #boton-guardar, #boton-guardar-nota, #editar-boton-guardar-nota {
     background-color: var(--colorprimario-mc);
     color: var(--colorresaltar-mc);
 }
-#boton-cancelar, #boton-eliminar, #boton-cerrar{
+#boton-cancelar, #boton-eliminar, #boton-cerrar, #boton-cancelar-nota, #editar-boton-eliminar-nota, #editar-boton-cancelar-nota{
     background-color: var(--colorsecundario-mc);
     color: var(--colorprimario-mc);
 }
@@ -556,4 +546,82 @@ textarea#c-descripcion, textarea#e-descripcion{
     border-radius: 5px;
     max-height: 55px;
     overflow: hidden;
+}
+
+
+/* Notas */
+
+.add-nota{
+    display: none;
+}
+.eliminar-nota, .add-nota{
+    display: none;
+    flex-direction: column;
+    z-index: 3;
+
+    box-shadow: 0px 0px 3px var(--colorprimario-mc);
+    border-radius: 8px;
+
+    width: 430px;
+    height: 264px;
+    top: 100px;
+    left: calc(50% - 175px);
+    position: absolute;
+}
+.add-nota .error{
+    background-color: var(--carta-rojo);
+}
+.nota{
+    display: flex;
+    flex-direction: column;
+    width: 220px ;
+    height: 240px;
+
+    background-color: var(--colorresaltar-mc);
+    color: var(--colorprimario-mc);
+    border-radius: 8px;
+    margin: 8px;
+    padding: 0px 4px 8px 4px;
+}
+.titulo-nota{
+    color: var(--colorprimario-mc);
+    background-color: transparent;
+    border: none;
+
+    font-size: large;
+    font-weight: 600;
+    padding: 8px 0px;
+    margin: 12px 12px 0 12px;
+}
+.titulo-nota:focus-visible{
+    outline:1px solid  var(--colorsecundario-mc);
+    color: var(var(--colorsecundario-mc));
+    border-radius: 8px;
+}
+textarea, .contenido{
+    width: auto;
+    height: 220px;
+    margin: 12px;
+    background-color:var(--colorresaltar-mc);
+    border: none;
+    font: var(--p);
+    resize: none;
+    color:var(--colorprimario-mc);
+    
+}
+
+textarea:focus-visible{
+    outline:1px solid  var(--colorsecundario-mc);
+    color: var(--colorprimario-mc);
+    border-radius: 8px;
+}
+textarea::-webkit-scrollbar{
+    background-color: var(--colorresaltar-mc);
+    width: 10px;
+    border-radius: 10px;
+}
+textarea::-webkit-scrollbar-thumb{
+    background: var(--colorprimario-mc);
+    border: 1px solid var(--colorresaltar-mc);
+    border-radius: 10px;
 }

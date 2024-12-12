@@ -205,7 +205,14 @@
             </section>
             <section class="columna-3">
                 <p class="fecha" id="fecha"></p>
-                <div class="lista" id="#L-000001"> 
+                <div class="botones">
+                    
+                </div>
+                <div class="lista-notas" id="lista-notas">
+
+                </div>
+
+                <div class="lista-listas" id="lista-notas"> 
                     <p class="nombre-lista">Nombre de lista</p>
                     <div>
                         <p class="checkbox">
@@ -242,10 +249,6 @@
                         </div>
                     </div>
                 </div>
-                <div class="nota" id="N-000001">
-                    <p class="nombre-nota">Nombre de nota</p>
-                    <textarea name="area-texto" placeholder="Aquí puedes escribir" spellcheck="true"></textarea>
-                </div>
             </section>
         </div>
 
@@ -275,9 +278,18 @@
             </div>
             <textarea id="e-descripcion"></textarea>
             <div class="caja-botones">
-                <button class="boton-cartas" id="boton-guardar-eliminar">Guardar</button>
+                <button class="boton-cartas" id="boton-guardar">Guardar</button>
                 <button class="boton-cartas" id="boton-eliminar">Eliminar</button>
                 <button class="boton-cartas" id="boton-cerrar">Cerrar</button>
+            </div>
+        </div>
+
+        <div class="add-nota" id="nueva-nota-abierta">
+            <input id="titulo-nota" class="titulo-nota" type="text" placeholder="Título" autocomplete="off" required></input>
+            <textarea id="contenido-nota" name="area-texto" placeholder="Aquí puedes escribir" spellcheck="true" required></textarea>
+            <div class="caja-botones-crear">
+                <button class="boton-cartas-nuevo" id="boton-guardar-nota">Guardar</button>
+                <button class="boton-cartas-nuevo" id="boton-cancelar-nota">Cancelar</button>
             </div>
         </div>
 
